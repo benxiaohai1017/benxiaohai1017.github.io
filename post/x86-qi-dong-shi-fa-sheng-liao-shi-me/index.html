@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>X86启动时发生了什么 | 野生码农的博客站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://benxiaohai1017.github.io/favicon.ico?v=1613359312863">
+<link rel="stylesheet" href="https://benxiaohai1017.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="摘自《笨办法学 Linux 中文版》
+你
+按电源开关（或启动虚拟机）
+现在计算机获得控制权
+控制权传给了 BIOS
+BIOS
+执行硬件特定的任务
+执行开机自检（POST），测试你的硬件
+检测安装的硬件，如硬盘，内存类型和数量，...
+通过将..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://benxiaohai1017.github.io">
+        <img src="https://benxiaohai1017.github.io/images/avatar.png?v=1613359312863" class="site-logo">
+        <h1 class="site-title">野生码农的博客站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      自强不息 只争朝夕
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://benxiaohai1017.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">X86启动时发生了什么</h2>
+            <div class="post-date">2021-02-15</div>
+            
+            <div class="post-content" v-pre>
+              <p>摘自《笨办法学 Linux 中文版》<br>
+你<br>
+按电源开关（或启动虚拟机）<br>
+现在计算机获得控制权<br>
+控制权传给了 BIOS<br>
+BIOS<br>
+执行硬件特定的任务<br>
+执行开机自检（POST），测试你的硬件<br>
+检测安装的硬件，如硬盘，内存类型和数量，...<br>
+通过将初始值写入其内存来初始化硬件<br>
+找到一个启动设备，通常是一个硬盘<br>
+读取并执行位于此磁盘开头的 MBR（主引导记录）<br>
+控制权现在传给了 MBR<br>
+MBR<br>
+MBR 寻找并执行 GRUB（多重操作系统启动管理器）<br>
+控制权现在传给了 GRUB<br>
+GRUB<br>
+查找可用的文件系统<br>
+查找并读取其配置文件，来了解：<br>
+系统位于哪里<br>
+启动什么系统<br>
+执行什么其他的操作<br>
+执行 Linux 内核，Linux 操作系统的主要部分<br>
+控制权现在传给了 Linux 内核<br>
+Linux 内核<br>
+查找并加载 initrd，这是初始的 ram 磁盘（虚拟出来的ram中的文件系统，initramfs）<br>
+initrd 包含必要驱动程序，允许真实文件系统的访问和挂载<br>
+挂载文件系统，它在 GRUB 配置文件中指定。<br>
+执行<code>/sbin/init</code>，一个启动所有其他程序的特殊程序<br>
+控制权现在传给了 init<br>
+init<br>
+查看<code>etc/inittab</code>来确定所需的运行级别<br>
+加载适合此运行级别的所有程序<br>
+加载来自<code>/etc/rc.d/rc2.d/</code>的所有程序，因为 2 是默认的 Debian<br>
+运行级别<br>
+启动 SSH 和 TTY，以便你可以连接到你的计算机<br>
+启动现在完成了<br>
+你<br>
+使用 SSH 连接到你的计算机<br>
+SSH 守护进程为你执行 bash shell<br>
+你现在可以输入东西<br>
+你再次获得控制权</p>
+<p>以下摘自<br>
+http://c.biancheng.net/view/1013.html</p>
+<p>centos6启动流程<br>
+目前，CentOS 6.x 的启动流程经历以下几步：<br>
+服务器加电，加载 BIOS 信息，BIOS 进行系统检测。依照 BIOS 设定，找到第一个可以启动的设备（一般是硬盘）；<br>
+读取第一个启动设备的 MBR (主引导记录），加载 MBR 中的 Boot Loader（启动引导程序，最为常见的是 GRUB）。<br>
+依据 Boot Loader 的设置加载内核，内核会再进行一遍系统检测。系统一般会采用内核检测硬件的信息，而不一定采用 Bios 的自检信息。内核在检测硬件的同时，还会通过加载动态模块的形式加载硬件的驱动。<br>
+内核启动系统的第一个进程，也就是 /sbin/init。<br>
+由 /sbin/init 进程调用 /etc/init/rcS.conf 配置文件，通过这个配置文件调用 /etc/rc.d/rc.sysinit 配置文件。而 /etc/rc.d/rc.sysinit 配置文件是用来进行系统初始化的，主要用于配置计算机的初始环境。<br>
+还是通过 /etc/init/rcS.conf 配置文件调用 /etc/inittab 配置文件。通过 /etc/inittab 配置文件来确定系统的默认运行级别。<br>
+确定默认运行级别后，调用 /etc/init/rc.conf 配置文件。<br>
+通过 /etc/init/rc.conf 配置文件调用并执行 /etc/rc.d/rc 脚本，并传入运行级别参数。<br>
+/etc/rc.d/rc 确定传入的运行级别，然后运行相应的运行级别目录 /etc/rc[0-6].d/ 中的脚本。<br>
+/etc/rc[0-6].d/ 目录中的脚本依据设定好的优先级依次启动和关闭。<br>
+最后执行 /etc/rc.d/rc.local 中的程序。<br>
+如果是字符界面启动，就可以看到登录界面了。如果是图形界面启动，就会调用相应的 X Window 接口。</p>
+<p>总的来说，Linux 系统的启动，要经历BIOS自检 -&gt; 启动 GRUB -&gt; 加载内核 -&gt; 执行第一个进程 -&gt; 配置系统初始环境。当然，本节仅是简单地看启动过程，接下来分别详解介绍每步启动过程。</p>
+<figure data-type="image" tabindex="1"><img src="https://benxiaohai1017.github.io/post-images/1613359307933.jpeg" alt="" loading="lazy"></figure>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://benxiaohai1017.github.io/post/ubuntu18045-kai-qi-yuan-cheng-zhuo-mian/">
+                  <h3 class="post-title">
+                    ubuntu18.04.5开启远程桌面
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
