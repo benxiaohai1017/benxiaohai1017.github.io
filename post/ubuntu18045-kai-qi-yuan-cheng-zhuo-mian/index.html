@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于 | 野生码农的博客站</title>
+<title>ubuntu18.04.5开启远程桌面 | 野生码农的博客站</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -24,17 +24,12 @@
 
 
 
-    <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
+    <meta name="description" content="使用VNC协议 (显示ubuntu原始gnome桌面)
 
-🏠 关于本站
-使用Gridea搭建的博客
-👨‍💻 博主是谁
-野生码农，和80年代踩缝纫机的女工没有区别
-⛹ 兴趣爱好
-当然是玩啦
-📬 联系我呀
-..." />
+远程server的设置：
+打开设置-共享
+将允许他人远程连接控制该电脑开启 （如果不能开启或者没有这个选项，则可能需要安装vino。我就是安装了vino才有了这个选项）
+sudo a..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -106,23 +101,49 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于</h2>
-            <div class="post-date">2019-01-25</div>
+            <h2 class="post-title">ubuntu18.04.5开启远程桌面</h2>
+            <div class="post-date">2021-02-15</div>
             
             <div class="post-content" v-pre>
-              <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>使用Gridea搭建的博客</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>野生码农，和80年代踩缝纫机的女工没有区别</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>当然是玩啦</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
+              <p>使用VNC协议 (显示ubuntu原始gnome桌面)</p>
+<ol>
+<li>远程server的设置：<br>
+打开设置-共享<br>
+将允许他人远程连接控制该电脑开启 （如果不能开启或者没有这个选项，则可能需要安装vino。我就是安装了vino才有了这个选项）<br>
+sudo apt install vino</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://benxiaohai1017.github.io/post-images/1613358949674.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://benxiaohai1017.github.io/post-images/1613358961767.png" alt="" loading="lazy"></figure>
+<p>安装vncserver的依赖包：<br>
+sudo apt-get install xrdp xbase-clients</p>
+<p>安装dconf-editor：<br>
+sudo apt-get install dconf-editor</p>
+<p>取消权限限制：打开dconf-editor，依次展开org-&gt;gnome-&gt;desktop-&gt;remote-access，然后取消 “require-encryption”的勾选即可。<br>
+<img src="https://benxiaohai1017.github.io/post-images/1613358968619.png" alt="" loading="lazy"></p>
+<ol start="2">
+<li>本地机器设置<br>
+打开系统自带的远程访问工具：windows的远程连接（mstc）或者ubuntu的Remmina，或者下载VNC Viewer<br>
+选择VNC-any或者console，输入ip和密码即可</li>
+</ol>
+<p>注意事项<br>
+切记不要在server中安装太多版本的vnc server<br>
+使用dpkg -l | grep -i &quot;vnc&quot;搜索server中安装的vnc server，只保留最简配置即可：<br>
+vino是保证其他机器远程到本机的，<br>
+libvncclient1:amd64和remmina-plugin-vnc是使用remmina远程至其他机器的。<br>
+其他vnc相关的包都可以卸载。</p>
+<p>使用vnc协议进行远程的时候，是需要依赖xrdp和xorgxrdp这两个包的！</p>
 
             </div>
             
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://benxiaohai1017.github.io/post/hello-gridea/">
+                  <h3 class="post-title">
+                    Hello Gridea
+                  </h3>
+                </a>
+              </div>
             
 
             

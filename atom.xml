@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://benxiaohai1017.github.io</id>
     <title>野生码农的博客站</title>
-    <updated>2021-02-15T01:28:23.984Z</updated>
+    <updated>2021-02-15T03:18:30.425Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://benxiaohai1017.github.io"/>
     <link rel="self" href="https://benxiaohai1017.github.io/atom.xml"/>
@@ -10,6 +10,41 @@
     <logo>https://benxiaohai1017.github.io/images/avatar.png</logo>
     <icon>https://benxiaohai1017.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 野生码农的博客站</rights>
+    <entry>
+        <title type="html"><![CDATA[ubuntu18.04.5开启远程桌面]]></title>
+        <id>https://benxiaohai1017.github.io/post/ubuntu18045-kai-qi-yuan-cheng-zhuo-mian/</id>
+        <link href="https://benxiaohai1017.github.io/post/ubuntu18045-kai-qi-yuan-cheng-zhuo-mian/">
+        </link>
+        <updated>2021-02-15T03:14:28.000Z</updated>
+        <content type="html"><![CDATA[<p>使用VNC协议 (显示ubuntu原始gnome桌面)</p>
+<ol>
+<li>远程server的设置：<br>
+打开设置-共享<br>
+将允许他人远程连接控制该电脑开启 （如果不能开启或者没有这个选项，则可能需要安装vino。我就是安装了vino才有了这个选项）<br>
+sudo apt install vino</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://benxiaohai1017.github.io/post-images/1613358949674.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://benxiaohai1017.github.io/post-images/1613358961767.png" alt="" loading="lazy"></figure>
+<p>安装vncserver的依赖包：<br>
+sudo apt-get install xrdp xbase-clients</p>
+<p>安装dconf-editor：<br>
+sudo apt-get install dconf-editor</p>
+<p>取消权限限制：打开dconf-editor，依次展开org-&gt;gnome-&gt;desktop-&gt;remote-access，然后取消 “require-encryption”的勾选即可。<br>
+<img src="https://benxiaohai1017.github.io/post-images/1613358968619.png" alt="" loading="lazy"></p>
+<ol start="2">
+<li>本地机器设置<br>
+打开系统自带的远程访问工具：windows的远程连接（mstc）或者ubuntu的Remmina，或者下载VNC Viewer<br>
+选择VNC-any或者console，输入ip和密码即可</li>
+</ol>
+<p>注意事项<br>
+切记不要在server中安装太多版本的vnc server<br>
+使用dpkg -l | grep -i &quot;vnc&quot;搜索server中安装的vnc server，只保留最简配置即可：<br>
+vino是保证其他机器远程到本机的，<br>
+libvncclient1:amd64和remmina-plugin-vnc是使用remmina远程至其他机器的。<br>
+其他vnc相关的包都可以卸载。</p>
+<p>使用vnc协议进行远程的时候，是需要依赖xrdp和xorgxrdp这两个包的！</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://benxiaohai1017.github.io/post/hello-gridea/</id>
