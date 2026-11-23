@@ -13,13 +13,15 @@ draft: false
 
 打开 **设置 → 共享**，将「允许他人远程连接控制该电脑」开启。
 
+![设置 → 共享：Screen Sharing 已开启](/images/ubuntu-sharing-panel.png)
+
 如果不能开启或者没有这个选项，则可能需要安装 vino——我就是安装了 vino 才有了这个选项：
 
 ```bash
 sudo apt install vino
 ```
 
-
+![Screen Sharing 详细设置：要求密码，有线网络已开启](/images/ubuntu-screen-sharing.png)
 
 安装 vncserver 的依赖包：
 
@@ -35,6 +37,7 @@ sudo apt-get install dconf-editor
 
 取消权限限制：打开 dconf-editor，依次展开 `org → gnome → desktop → remote-access`，然后取消 `require-encryption` 的勾选。
 
+![dconf-editor：将 require-encryption 关闭](/images/ubuntu-dconf-require-encryption.png)
 
 ## 2. 本地机器设置
 

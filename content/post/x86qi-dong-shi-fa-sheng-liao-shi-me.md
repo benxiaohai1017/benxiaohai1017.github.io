@@ -9,6 +9,8 @@ draft: false
 
 摘自《笨办法学 Linux 中文版》
 
+![x86 启动流程：BIOS → MBR → 内核 → initramfs → /sbin/init](/images/x86-boot-flow.jpg)
+
 你 → 按电源开关（或启动虚拟机）→ 现在计算机获得控制权 → 控制权传给了 BIOS
 
 **BIOS**
