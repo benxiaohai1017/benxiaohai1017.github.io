@@ -1,0 +1,20 @@
+{{- define "main" }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}<div class="post-description">{{ . }}</div>{{ end }}
+</header>
+
+<div class="links-list">
+{{- range hugo.Data.links }}
+<article class="post-entry">
+  <header class="entry-header">
+    <h2><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></h2>
+  </header>
+  {{- with .description }}
+  <div class="entry-content"><p>{{ . }}</p></div>
+  {{- end }}
+</article>
+{{- end }}
+</div>
+{{- end }}

@@ -1,0 +1,10 @@
+.memo-entry .entry-header { margin-bottom: 4px; }
+.memo-date {
+  font-size: 13px;
+  color: var(--secondary);
+  font-variant-numeric: tabular-nums;
+}
+.memo-entry .entry-content { margin-top: 0; }
+.memo-tags { margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; }
+.memo-tag { font-size: 12px; color: var(--secondary); }
+.memo-entry .md-content p { margin: 0 0 6px; }

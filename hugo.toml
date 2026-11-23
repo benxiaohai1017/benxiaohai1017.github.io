@@ -1,0 +1,106 @@
+baseURL = "https://benxiaohai1017.github.io/"
+locale = "zh-cn"
+defaultContentLanguage = "zh-cn"
+title = "嵌入式码农的博客"
+theme = "PaperMod"
+
+enableRobotsTXT = true
+enableEmoji = true
+hasCJKLanguage = true
+summaryLength = 70
+rssLimit = 20
+
+[permalinks]
+  post = "/post/:contentbasename/"
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+  term = ["HTML"]
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+
+[params]
+  env = "production"
+  description = "一个普通的嵌入式码农，做过寄存柜、快递柜、RFID 射频、AGV 机器人、PLC 控制器、传感器、RTU 等产品"
+  keywords = ["嵌入式", "STM32", "Linux", "RTOS", "物联网", "博客"]
+  author = "yss"
+  DateFormat = "2006-01-02"
+  defaultTheme = "auto"
+  disableThemeToggle = false
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  ShowToc = true
+  TocOpen = false
+  disableSpecial1stPost = true
+  disableScrollToTop = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = true
+  comments = false
+  mainSections = ["post"]
+
+  [params.assets]
+    disableHLJS = true
+    favicon = "/favicon.ico"
+
+  [params.homeInfoParams]
+    Title = "嵌入式码农的博客"
+    Content = """
+一个普通的嵌入式码农，做过寄存柜、快递柜、RFID 射频、AGV 机器人、PLC 控制器、传感器、RTU 等产品。
+
+坐标杭州。白天码代码调设备，晚上研究点别的，顺手记下来。
+"""
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/benxiaohai1017"
+
+  [[params.socialIcons]]
+    name = "mail"
+    url = "mailto:1032181400@qq.com"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "首页"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    identifier = "posts"
+    name = "博客"
+    url = "/post/"
+    weight = 20
+  [[menu.main]]
+    identifier = "memos"
+    name = "闪念"
+    url = "/memos/"
+    weight = 30
+  [[menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "/archives/"
+    weight = 40
+  [[menu.main]]
+    identifier = "tags"
+    name = "标签"
+    url = "/tags/"
+    weight = 50
+  [[menu.main]]
+    identifier = "links"
+    name = "友链"
+    url = "/links/"
+    weight = 60
