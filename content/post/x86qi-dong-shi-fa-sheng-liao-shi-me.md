@@ -2,8 +2,7 @@
 title: "X86 启动时发生了什么"
 date: 2021-02-15T09:27:37+08:00
 lastmod: 2026-10-20T09:33:55+08:00
-categories: ["默认分类"]
-tags: []
+tags: ["x86", "BIOS", "启动流程"]
 draft: false
 ---
 

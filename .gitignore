@@ -3,3 +3,6 @@ resources/
 .hugo_build.lock
 .hugo-server.log
 .DS_Store
+
+# VSCode/TS 编辑器生成
+assets/jsconfig.json

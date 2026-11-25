@@ -2,8 +2,7 @@
 title: "Ubuntu 18.04.5 开启远程桌面"
 date: 2021-02-15T09:26:07+08:00
 lastmod: 2026-10-20T16:06:37+08:00
-categories: []
-tags: []
+tags: ["Ubuntu", "远程桌面", "VNC"]
 draft: false
 ---
 

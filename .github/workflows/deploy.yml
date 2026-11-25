@@ -25,6 +25,15 @@ jobs:
           hugo-version: '0.170.1'
           extended: true
 
+      - name: Setup Dart Sass
+        run: |
+          curl -fsSL --retry 3 -o /tmp/sass.tar.gz \
+            https://github.com/sass/dart-sass/releases/download/1.108.2/dart-sass-1.108.2-linux-x64.tar.gz
+          mkdir -p "$HOME/dart-sass"
+          tar xzf /tmp/sass.tar.gz -C "$HOME/dart-sass" --strip-components=1
+          echo "$HOME/dart-sass" >> "$GITHUB_PATH"
+          "$HOME/dart-sass/sass" --version
+
       - name: Build site
         run: hugo --gc --minify --cleanDestinationDir
 
